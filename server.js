@@ -12,14 +12,16 @@ app.use(express.urlencoded ({ extended: true }));
 app.use(express.json());
 
 // make the mongoose connection 
-// mongoose.connect(process.env.MONGODB_URI || "mongod://localhost/workout", {
-//     useNewUrlParser: true, 
-//     useFindAndModify: false
-// });
+mongoose.connect(process.env.MONGODB_URI || "mongod://localhost/workout", {
+    useNewUrlParser: true, 
+    useFindAndModify: false
+});
 
-//  api routes to 
+// routes
+app.use(require("./routes/api.js"));
+app.use(require("./routes/view.js"));
 
-app.listen(PORT, () =>{
+app.listen(PORT, () => {
     console.log(`App is listening on port ${PORT}!`);
 });
 
