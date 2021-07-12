@@ -44,3 +44,15 @@ const workoutSchema = new Schema({
     }
 }
 );
+
+// adds a dynamically-created property 
+workoutSchema.virtual("totalDuration").get(function() {
+
+    return this.exercises.reduce((total, exercises) => {
+        return total + exercises.duration;
+    }, 0);
+});
+
+const Workout = mongoose.model("Workout", workoutSchema);
+
+module.exports = Workout; 
