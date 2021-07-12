@@ -12,7 +12,7 @@ app.use(express.urlencoded ({ extended: true }));
 app.use(express.json());
 
 // make the mongoose connection 
-mongoose.connect(process.env.MONGODB_URI || "mongod://localhost/workout", 
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", 
 {
     useNewUrlParser: true, 
     useFindAndModify: false,
